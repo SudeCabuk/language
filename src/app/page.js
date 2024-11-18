@@ -4,34 +4,24 @@ import { Dropdown } from "primereact/dropdown";
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
-const resources = {
-  en: {
-    translation: {
-      welcome:
-        "Sample text in English is also used in software development for testing user interfaces. For example, when developing text-editing software or word processors, placeholder text helps in ensuring that the software correctly handles formatting, text wrapping, and more.",
-    },
-  },
-  tr: {
-    translation: {
-      welcome:
-        "İngilizce örnek metin, kullanıcı arayüzlerini test etmek için yazılım geliştirmede de kullanılır. Örneğin, metin düzenleme yazılımı veya kelime işlemciler geliştirirken, yer tutucu metin, yazılımın biçimlendirme, metin kaydırma ve daha fazlasını doğru şekilde işlemesini sağlamaya yardımcı olur.",
-    },
-  },
-};
+import en from "./locales/en.json";
+import tr from "./locales/tr.json";
 
-i18n
-  .use(initReactI18next) // passes i18n down to react-i18next
-  .init({
-    resources,
-    lng: "en",
-  });
+i18n.use(initReactI18next).init({
+  resources: {
+    en: { translation: en },
+    tr: { translation: tr },
+  },
+  lng: "en",
+  fallbackLng: "en",
+});
 
 export default function Home() {
   const [selectedLanguages, setSelectedlanguages] = useState("en");
 
   const languages = [
     { label: "English", value: "en" },
-    { label: "Turkish", value: "tr" },
+    { label: "Türkçe", value: "tr" },
   ];
 
   const handleLanguageChange = (lang) => {
